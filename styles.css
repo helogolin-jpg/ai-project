@@ -1,0 +1,216 @@
+/* ---------- Colours and type ---------- */
+:root {
+  --pink: #FF3EB5;
+  --hot: #FF4F7B;
+  --orange: #FF7A00;
+  --yellow: #FFF200;
+  --white: #FFFFFF;
+  --black: #000000;
+  --font: "Arial Narrow", Arial, Helvetica, sans-serif;
+  --body-font: Arial, Helvetica, sans-serif;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--black);
+  font-family: var(--body-font);
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: var(--black); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { background: var(--black); color: var(--white); }
+
+:focus-visible { outline: 4px solid var(--black); outline-offset: 3px; }
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  background: var(--black);
+  color: var(--white);
+  padding: .5rem 1rem;
+  z-index: 10;
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------- Full-width colour blocks ---------- */
+.block { padding: 4.5rem 1.5rem; }
+.block-pink { background: var(--pink); }
+.block-hot { background: var(--hot); }
+.block-orange { background: var(--orange); }
+.block-yellow { background: var(--yellow); }
+.block-white { background: var(--white); }
+
+.wrap { max-width: 46rem; margin: 0 auto; }
+
+section { scroll-margin-top: 0; }
+
+/* ---------- Headings: big, simple, lowercase ---------- */
+h1, h2, h3 {
+  font-family: var(--font);
+  font-weight: 700;
+  text-transform: lowercase;
+  letter-spacing: -0.04em;
+  line-height: .95;
+}
+
+h1 {
+  font-size: clamp(4rem, 17vw, 10rem);
+  margin: 0 0 1.5rem;
+  filter: blur(0.6px);
+}
+
+h2 {
+  font-size: clamp(3rem, 11vw, 6rem);
+  margin: 0 0 2rem;
+}
+
+h3 {
+  font-size: clamp(1.75rem, 5vw, 2.4rem);
+  margin: 2.5rem 0 .75rem;
+}
+
+p { margin: 0 0 1.1rem; max-width: 65ch; }
+
+.lede {
+  font-size: clamp(1.3rem, 3.5vw, 1.7rem);
+  line-height: 1.35;
+  font-weight: 700;
+}
+
+/* ---------- Section menu ---------- */
+.toc {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+}
+.toc a {
+  display: inline-block;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-decoration: none;
+  border: 2px solid var(--black);
+  padding: .35rem .9rem;
+}
+.toc a:hover { background: var(--black); color: var(--pink); }
+
+/* ---------- Fact / view / prediction tags ---------- */
+.tag {
+  display: inline-block;
+  font-size: .8rem;
+  font-weight: 700;
+  line-height: 1.4;
+  padding: .05rem .45rem;
+  margin-right: .35rem;
+  vertical-align: .12em;
+  text-transform: lowercase;
+}
+.tag-fact { background: var(--black); color: var(--white); }
+.tag-view { background: var(--white); color: var(--black); border: 2px solid var(--black); }
+.tag-prediction { background: transparent; color: var(--black); border: 2px dashed var(--black); }
+
+/* ---------- Images ---------- */
+figure { margin: 2rem 0; border: 4px solid var(--black); }
+
+/* ---------- "The good": three columns ---------- */
+.trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.trio h3 { margin-top: 0; }
+
+/* ---------- Risks ---------- */
+.split {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+.split img { border: 4px solid var(--black); }
+.big {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4.5vw, 2.3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.big .tag { font-family: var(--body-font); letter-spacing: 0; }
+
+/* ---------- Futures ---------- */
+.futures-switch { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.25rem 0; }
+.futures-switch button {
+  font: 700 1.15rem/1 var(--font);
+  background: var(--white);
+  color: var(--black);
+  border: 3px solid var(--black);
+  padding: .7rem 1.1rem;
+  min-height: 44px;
+  cursor: pointer;
+}
+.futures-switch button[aria-pressed="true"] { background: var(--black); color: var(--yellow); }
+
+.futures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 1.5rem 0 1rem;
+}
+.future { padding: 1.5rem; border: 4px solid var(--black); }
+.future h3 { margin-top: 0; }
+.future-dark { background: var(--black); color: var(--pink); }
+.future-dark .tag-prediction { color: var(--pink); border-color: var(--pink); }
+.future-light { background: var(--white); }
+
+/* With JavaScript on, only the chosen future is shown */
+.js .futures { grid-template-columns: 1fr; }
+.js .future[hidden] { display: none; }
+
+/* ---------- Sources ---------- */
+.sources { list-style: none; padding: 0; margin: 0; }
+.sources li {
+  border-top: 3px solid var(--black);
+  padding: 1rem 0;
+}
+.sources li:last-child { border-bottom: 3px solid var(--black); }
+.sources a { font-weight: 700; font-size: 1.15rem; }
+.sources span { display: block; margin-top: .3rem; max-width: 65ch; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--black);
+  color: var(--pink);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+.site-footer p { margin: 0 auto; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 760px) {
+  .block { padding: 3rem 1.25rem; }
+  .trio, .futures { grid-template-columns: 1fr; gap: 1rem; }
+  .split { grid-template-columns: 6rem 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
